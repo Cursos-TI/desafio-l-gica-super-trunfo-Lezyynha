@@ -156,7 +156,7 @@ int main() {
         printf ("Resultado: Empate!\n");
     }
 
-        int escolha;
+    int escolha;
     printf("\nEscolha o atributo para comparação:\n");
     printf("1 - População\n");
     printf("2 - Área\n");
@@ -261,8 +261,84 @@ int main() {
         default:
             printf("Opção inválida. Tente novamente!\n");
     }
+    
+        int opcao1, opcao2;
 
+    printf("\nEscolha o primeiro atributo para comparação:\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos Turísticos\n");
+    printf("5 - Densidade Populacional\n");
+    printf("6 - PIB per capita\n");
+    printf("7 - Super Poder\n");
+    scanf("%d", &opcao1);
 
+    printf("\nEscolha o segundo atributo para comparação (diferente do primeiro):\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos Turísticos\n");
+    printf("5 - Densidade Populacional\n");
+    printf("6 - PIB per capita\n");
+    printf("7 - Super Poder\n");
+    scanf("%d", &opcao2);
+
+    if (opcao1 == opcao2) {
+        printf("Você escolheu o mesmo atributo duas vezes. Tente novamente executando o programa.");
+        return 0;
+    }
+
+    float valor1A = 0, valor2A = 0;
+    float valor1B = 0, valor2B = 0;
+
+    if (opcao1 == 1) { valor1A = populacao1; valor2A = populacao2; }
+    else if (opcao1 == 2) { valor1A = area1; valor2A = area2; }
+    else if (opcao1 == 3) { valor1A = pib1; valor2A = pib2; }
+    else if (opcao1 == 4) { valor1A = pontosTuristicos1; valor2A = pontosTuristicos2; }
+    else if (opcao1 == 5) { valor1A = densidade1; valor2A = densidade2; }
+    else if (opcao1 == 6) { valor1A = percapita1; valor2A = percapita2; }
+    else if (opcao1 == 7) { valor1A = superPoder1; valor2A = superPoder2; }
+
+    if (opcao2 == 1) { valor1B = populacao1; valor2B = populacao2; }
+    else if (opcao2 == 2) { valor1B = area1; valor2B = area2; }
+    else if (opcao2 == 3) { valor1B = pib1; valor2B = pib2; }
+    else if (opcao2 == 4) { valor1B = pontosTuristicos1; valor2B = pontosTuristicos2; }
+    else if (opcao2 == 5) { valor1B = densidade1; valor2B = densidade2; }
+    else if (opcao2 == 6) { valor1B = percapita1; valor2B = percapita2; }
+    else if (opcao2 == 7) { valor1B = superPoder1; valor2B = superPoder2; }
+
+    int venceu1A = 0;
+    int venceu1B = 0;
+
+    if (opcao1 == 5) {
+        if (valor1A < valor2A) venceu1A = 1;
+    } else {
+        if (valor1A > valor2A) venceu1A = 1;
+    }
+
+    if (opcao2 == 5) {
+        if (valor1B < valor2B) venceu1B = 1;
+    } else {
+        if (valor1B > valor2B) venceu1B = 1;
+    }
+
+    float soma1 = valor1A + valor1B;
+    float soma2 = valor2A + valor2B;
+
+    printf("\nComparando as cartas: %s vs %s\n", cidade1, cidade2);
+    printf("Atributo 1 (%d): %.2f x %.2f => %s venceu\n", opcao1, valor1A, valor2A, venceu1A ? cidade1 : cidade2);
+    printf("Atributo 2 (%d): %.2f x %.2f => %s venceu\n", opcao2, valor1B, valor2B, venceu1B ? cidade1 : cidade2);
+
+    printf("\nSoma dos atributos:\n%s: %.2f\n%s: %.2f\n", cidade1, soma1, cidade2, soma2);
+
+    if (soma1 > soma2) {
+        printf("Resultado final: %s venceu a rodada!\n", cidade1);
+    } else if (soma2 > soma1) {
+        printf("Resultado final: %s venceu a rodada!\n", cidade2);
+    } else {
+        printf("Resultado final: Empate!\n");
+    }
 
     return 0;
 }
